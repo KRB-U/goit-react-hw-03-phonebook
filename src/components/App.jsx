@@ -33,6 +33,21 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contactsLs = localStorage.getItem('contacts');
+    const parseContacts = JSON.parse(contactsLs);
+
+    if (parseContacts !== null) {
+      this.setState({ contacts: parseContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   nameUniqueKey = nanoid(5);
 
   handleSubmitForm = newContact => {
