@@ -16,7 +16,7 @@ export const Button = styled.button`
   background-color: orange;
   cursor: pointer;
 
-  width: 60px;
+  width: fit-content;
   height: 25px;
 
   display: flex;
